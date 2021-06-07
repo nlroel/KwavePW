@@ -52,7 +52,7 @@ clearvars;
 
 % simulation settings
 DATA_CAST       = 'gpuArray-single';     % set to 'single' or 'gpuArray-single' to speed up computations
-RUN_SIMULATION  = false;         % set to false to reload previous results instead of running simulation
+RUN_SIMULATION  = true;         % set to false to reload previous results instead of running simulation
 
 % =========================================================================
 % DEFINE THE K-WAVE GRID
@@ -100,7 +100,7 @@ kgrid.makeTime(c0, [], t_end);
 
 % define properties of the input signal
 source_strength = 1e6;          % [Pa]
-tone_burst_freq = 1.5e6;        % [Hz]
+tone_burst_freq = 3.5e6;        % [Hz]
 tone_burst_cycles = 4;
 
 % create the input signal using toneBurst 
@@ -234,6 +234,7 @@ density_map(scattering_region3 == 1) = scattering_rho0(scattering_region3 == 1);
 % set the input settings
 input_args = {...
     'PMLInside', false, 'PMLSize', [pml_x_size, pml_y_size, pml_z_size], ...
+    'PMLAlpha', 10 , ...
     'DataCast', DATA_CAST, 'DataRecast', true, 'PlotSim', false};
 
 % run the simulation if set to true, otherwise, load previous results from

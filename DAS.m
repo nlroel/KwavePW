@@ -33,7 +33,7 @@ classdef DAS
             scan_lines_ext = zeros(obj.kgrid.Nt, obj.transducer.number_elements + d);
             d_2 = round(d/2);
             scan_lines_ext(:, d_2:d_2+obj.transducer.number_elements-1) = obj.sensor_data';
-            wd = hanning(d);
+            wd = ones(d,1);
             wd_norm = wd / sum(wd(:));
             delay_ext = inf(obj.kgrid.Nt, obj.transducer.number_elements + d);
             for j = 1:obj.transducer.number_elements
